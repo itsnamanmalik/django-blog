@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block Title %}Home{% endblock Title %}
+{% block homeactive %}active{% endblock homeactive %}
+
+{% block body_block %}
+<section class="jumbotron text-center">
+    <div class="container">
+        {% if user.i2s_authenticated %}
+        <h2>Welcome {{ user.username }}!</h2>
+        {% endif %}
+        <img src="{% static 'images/logo.png' %}" alt="logo" width="120">
+
+        <h1 class="jumbotron-heading">
+
+            <span href="" class="typewrite" data-period="1000"
+                data-type='[ "Crazy", "For", "Learning", "Something", "New" ]'>
+                <span class="wrap"></span>
+        </h1>
+        {% comment %} {% lorem 1 p %} {% endcomment %}
+        <p>
+            <a href="{% url 'blog' %}" target="_blank" class="btn btn-danger my-2">Browse Blog</a>
+            <a href="{% url 'videos' %}" target="_blank" class="btn btn-success my-2">Browse Recommended Videos</a>
+            <a href="{% url 'contact' %}" target="_blank" class="btn btn-primary my-2">Contact Me</a>
+        </p>
+
+    </div>
+</section>
+
+<div class="container  my-3">
+
+    {% comment %} {% lorem 3 p %} {% endcomment %}
+</div>
+{% endblock body_block %}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block Title %}{{post.title}}{% endblock Title %}
+{% block blogactive %}active{% endblock blogactive %}
+
+{% block body_block %}
+
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">{{post.title}}</h1>
+  </div>
+</section>
+
+<div class="container" style="max-width: 800px" >
+  <div class="row">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'blog' %}">Blog</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{post.title}}</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="max-width: 800px">
+<div class="card p-4">
+<img src="{{post.featured_image.url}}" alt="{{post.title}}">
+{{post.content|safe}}
+</div>
+</div>
+
+{% endblock body_block %}

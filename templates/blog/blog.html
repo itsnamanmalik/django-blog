@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block Title %}Blog{% endblock Title %}
+{% block blogactive %}active{% endblock blogactive %}
+
+{% block body_block %}
+
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">BLOG</h1>
+  </div>
+</section>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Blog</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<div class="container  my-3">
+  <div class="row" style="align-items: center; justify-content: center;">
+    {% for post in allpost %}
+    <div class="col-auto mb-3">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <img src="{{post.featured_image.url}}" class="card-img-top" alt="{{post.title}}" width="246" height="138">
+          <h5 class="card-title">{{post.title}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">By: {{post.author}}</h6>
+          <h6 class="card-subtitle mb-2 text-muted">Published on: {{post.date}}</h6>
+          <div class="preview">
+            <p class="card-text">{{post.content|safe|truncatechars_html:200}}</p>
+          </div>
+          <a href="{{post.slug}}" class="card-link">Read More</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+{% endblock body_block %}

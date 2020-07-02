@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block Title %}{% endblock Title %}
+{% block videoactive %}active{% endblock videoactive %}
+
+{% block body_block %}
+
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">{{video.title}}</h1>
+  </div>
+</section>
+
+<div class="container" style="max-width: 800px" >
+  <div class="row">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'videos' %}">Videos</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{video.title}}</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="max-width: 800px">
+<div class="card p-4">
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{video.video_id}}" allowfullscreen></iframe>
+</div> 
+{{video.content|safe}}
+</div>
+</div>
+
+</div>
+
+{% endblock body_block %}

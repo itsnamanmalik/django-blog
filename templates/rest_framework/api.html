@@ -1,0 +1,16 @@
+{% extends 'rest_framework/base.html' %}
+
+{% block title %}Madlearners API{% endblock title %}
+
+{% block branding %}
+{% load static %}
+
+<span>
+<a href="{% url 'index' %}" class="navbar-brand">
+Mad Learners API <span class="version">1</span>
+</a>
+</span>
+
+
+
+{% endblock branding %}
