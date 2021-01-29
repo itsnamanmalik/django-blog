@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from accounts.models import *
+from blog.models import Category, Blog
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
@@ -8,11 +9,39 @@ from django.contrib.auth.views import auth_logout
 from django.contrib import messages
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
+from datetime import datetime
+from django.template.defaultfilters import slugify
 
 # Create your views here.
-
+@login_required
 def profile(request):
     return render(request, "main_app/profile.html")
+
+@login_required
+def submit_article(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        category = request.POST['category']
+        image = request.FILES.get('image', 'common/logo.png')
+        content = request.POST['content']
+        if title and category and image and content:
+            try:
+                category_ob = Category.objects.get(name=category)
+                blog = Blog(title=title, author=request.user.username,slug=slugify(title),featured_image=image, category=category_ob,content=content,date=datetime.today().strftime('%Y-%m-%d'))
+                blog.save()
+                messages.success(request,"Article posted for review")
+            except Category.DoesNotExist:
+                messages.error(request,"Some Error Occured!")
+    allcat = Category.objects.all()
+    all_dict = {"allcat": allcat}
+    return render(request, "main_app/submit_article.html", all_dict)
+
+
+@login_required
+def my_articles(request):
+    allpost = Blog.objects.filter(slug=slug)
+    blog_dict = {"allpost": allpost}
+    return render(request, 'blog/blog.html', blog_dict)
 
 
 @login_required

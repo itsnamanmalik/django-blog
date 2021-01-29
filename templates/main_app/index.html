@@ -30,7 +30,16 @@
 </section>
 
 <div class="container  my-3">
+    <h1 class="page-header">
+        Recent Blogs</h1>
+    {% for post in allpost %}
+    <hr>
+    <h2><a href="blog/{{post.slug}}" class="text-dark">{{post.title}}</a></h2>
+    <p>{{post.content|safe|truncatechars_html:200}}</p>
+    <a class="btn btn-sm btn-outline-danger" href="blog/{{post.slug}}">Read More <span
+            class="glyphicon glyphicon-chevron-right"></span></a>
+    <hr>
 
-    {% comment %} {% lorem 3 p %} {% endcomment %}
+    {% endfor %}
 </div>
 {% endblock body_block %}

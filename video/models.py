@@ -9,6 +9,7 @@ class Video(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, unique=False)
     slug = models.SlugField(max_length=100, unique=True)
     content = models.TextField()
-    featured = models.BooleanField(default=False)
+    featured = models.BooleanField(default=False) 
+    is_approved = models.BooleanField(default=False)
     def __str__(self):
         return self.title

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from home.models import *
+from blog.models import Blog
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import messages
@@ -8,11 +9,19 @@ from django.core.exceptions import ValidationError
 
 # Create your views here.
 
+def view_404(request, exception=None):
+    # make a redirect to homepage
+    # you can use the name of url or just the plain link
+    return redirect(request,'/') # or redirect('name-of-index-url')
+
+
 def privacy_policy(request):
     return render(request, 'main_app/privacy-policy.html')
 
 def index(request):
-    return render(request, 'main_app/index.html')
+    allpost = Blog.objects.all()
+    blog_dict = {"allpost": allpost}
+    return render(request, 'main_app/index.html', blog_dict)
     
 
 def contact(request):

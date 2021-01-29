@@ -6,7 +6,6 @@ document.head.appendChild(script);
 
 script.onload = function () {
   tinymce.init({
-    // selector: "#id_message",
     selector: "#id_content" ,
     branding: false,
     height: 400,

@@ -151,7 +151,8 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
-                        <a class="dropdown-item" href="#">Submit an Article</a>
+                        <a class="dropdown-item" href="{% url 'submit-article' %}">Submit an Article</a>
+                        <a class="dropdown-item" href="#">Your Articles</a>
                         <a class="dropdown-item" href="{% url 'logoutuser' %}">Logout</a>
                     </div>
                 </div>
@@ -168,7 +169,7 @@
     </nav>
 
     {% for message in messages %}
-    <div class="alert alert-{{message.tags}} mb-0 alert-dismissible fade show" role="alert">
+    <div class="alert alert-{{message.tags}} mb-0 ml-20 alert-dismissible fade show" role="alert">
         <strong>Message</strong> {{message}}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>

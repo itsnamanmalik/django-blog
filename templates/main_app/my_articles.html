@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block Title %}My Articles{% endblock Title %}
+
+{% block body_block %}
+<div class="container  my-3">
+
+    <div class="col-lg-12 my-2 mx-2">
+        <h1>My Articles</h1>
+        {% for post in allpost %}
+        <hr>
+        <h2><a href="blog/{{post.slug}}" class="text-dark">{{post.title}}</a></h2>
+        <p>{{post.content|safe|truncatechars_html:200}}</p>
+        <a class="btn btn-sm btn-outline-danger" href="blog/{{post.slug}}">Read More <span
+                class="glyphicon glyphicon-chevron-right"></span></a>
+        <hr>
+    
+        {% endfor %}
+        
+    </div>
+
+</div>
+
+{% endblock body_block %}

@@ -3,6 +3,7 @@ from home import views
 
 
 # /MadLearners/
+handler404  = views.view_404
 
 urlpatterns = [
     # re_path(r'^$', views.index, name='MadLearners'),

@@ -11,7 +11,6 @@
         <h1>Update Profile</h1>
         <form method="post" action="">
         {% csrf_token %}
-        <input type="hidden" name="formType" value="changeProfile">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputEmail4">Name</label>
@@ -36,7 +35,6 @@
         <h1>Change your password</h1>
         <form action="/profile/myaccount" method="post">
         {% csrf_token %}
-        <input type="hidden" name="formType" value="changePass">
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="pass">Your Password</label>

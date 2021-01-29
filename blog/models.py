@@ -1,11 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.html import mark_safe
 
 class Category(models.Model):
     name = models.CharField(max_length=50, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     featured_image = models.ImageField(upload_to='blog/categories',default ='common/placeholder.png')
     description = models.TextField(blank=True)
+    is_approved = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -22,6 +24,6 @@ class Blog(models.Model):
     featured = models.BooleanField(default=False)
     content = models.TextField()
     date = models.DateField()
-
+    is_approved = models.BooleanField(default=False)
     def __str__(self):
         return self.title

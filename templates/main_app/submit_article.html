@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block Title %}Submit An Article{% endblock Title %}
+
+{% block body_block %}
+<div class="container  my-3">
+
+    <div class="col-lg-12 my-2 mx-2">
+        <h1>Submit An Article</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="title" name="title" class="form-control" id="title" placeholder="Title">
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select name="category" class="form-control" id="category">
+                    {% for cat in allcat %}
+                    <option>{{cat.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="image">Featured Image</label>
+                <input name="image" accept="image/*" type="file" class="form-control" id="image" />
+            </div>
+            <div class="form-group">
+                <label for="content">Content</label>
+                <input name="content" class="form-control" id="id_content">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit for review</button>
+        </form>
+    </div>
+
+</div>
+<script type="text/javascript" src="{% static 'scripts/tinyinject.js' %}">
+</script>
+
+{% endblock body_block %}
