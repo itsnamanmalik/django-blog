@@ -1,4 +1,4 @@
-﻿asgiref==3.2.7
+asgiref==3.2.7
 bcrypt==3.1.7
 cffi==1.14.0
 cheroot==8.3.0
@@ -22,6 +22,6 @@ pycparser==2.20
 pytz==2020.1
 pywin32==227
 six==1.15.0
-sqlparse==0.3.1
+sqlparse==0.4.4
 tempora==3.0.0
 zc.lockfile==2.0
