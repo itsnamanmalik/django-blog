@@ -1,4 +1,4 @@
-﻿asgiref==3.2.7
+asgiref==3.2.7
 bcrypt==3.1.7
 cffi==1.14.0
 cheroot==8.3.0
@@ -15,7 +15,7 @@ Markdown==3.2.2
 more-itertools==8.3.0
 mysql-connector-python==8.0.20
 mysqlclient
-Pillow==9.3.0
+Pillow==10.0.1
 portend==2.6
 protobuf==3.12.2
 pycparser==2.20
